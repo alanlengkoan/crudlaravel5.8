@@ -13,7 +13,7 @@
     <table border="1">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>ID Data</th>
                 <th>Judul</th>
                 <th>Link</th>
                 <th>Text</th>
@@ -28,8 +28,8 @@
                     <td>{{ $artikel->link }}</td>
                     <td>{{ $artikel->text }}</td>
                     <td>
-                        <a href="">Ubah</a>
-                        <a href="">Hapus</a>
+                        <a href="/upd/{{ $artikel->id }}">Ubah</a>
+                        <a href="/del/{{ $artikel->id }}">Hapus</a>
                     </td>
                 </tr>
             @endforeach

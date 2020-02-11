@@ -72,4 +72,42 @@ class Crud extends Controller
 
         return redirect('/data');
     }
+
+    // untuk form ups
+    public function upd($id)
+    {
+        $data = DB::table('tb_data')->where('id', $id)->get();
+
+        $view = [
+            'title' => 'Upd Artikel | Laravel 5.8',
+            'data' => $data
+        ];
+
+        return view('content/upd', $view);
+    }
+
+    // untuk proses update data
+    public function upd_action(Request $post, $id)
+    {
+        $input = $post->all();
+
+        $data = [
+            'id_data' => $input['inpiddata'],
+            'judul'   => $input['inpjudul'],
+            'link'    => $input['inplink'],
+            'text'    => $input['inptext']
+        ];
+        
+        DB::table('tb_data')->where('id', $id)->update($data);
+
+        return redirect('/data');
+    }
+
+    // untuk proses delete
+    public function del($id)
+    {
+        DB::table('tb_data')->where('id', $id)->delete();
+
+        return redirect('/data');
+    }
 }
